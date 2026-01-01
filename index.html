@@ -8,12 +8,12 @@
     font-family: 'Arial', sans-serif; 
     text-align: center; 
     margin: 30px; 
-    background: #f0f4f8; 
-    color: #1a1a2e; 
+    background: linear-gradient(135deg, #FFF8F0, #FDEBD0); 
+    color: #4B3B2B; /* brun foncé élégant */
   }
 
   h1 { 
-    color: #0d1b2a; 
+    color: #D72638; /* rouge profond */
     font-size: 36px; 
     display: flex; 
     justify-content: center; 
@@ -29,6 +29,7 @@
   p { 
     font-size: 18px; 
     margin: 5px 0; 
+    color: #4B3B2B;
   }
 
   .buttons button { 
@@ -38,25 +39,28 @@
     cursor: pointer; 
     border: none; 
     border-radius: 6px; 
-    background-color: #0d1b2a; 
-    color: #ffffff; 
-    transition: background-color 0.3s; 
+    background-color: #F4C430; /* doré lumineux */
+    color: #4B3B2B; /* texte brun pour contraste */
+    transition: background-color 0.3s, transform 0.2s; 
   }
 
   .buttons button:hover { 
-    background-color: #1a3c6e; 
+    background-color: #D72638; /* rouge passion */
+    color: #FFF8F0;
+    transform: scale(1.05);
   }
 
   #thanks { 
     margin-top: 30px; 
     font-size: 20px; 
-    color: #1a3c6e; 
+    color: #FF6F61; /* rose corail */
   }
 
   #counter { 
     margin: 20px; 
     font-weight: bold; 
     font-size: 18px; 
+    color: #1CA9C9; /* bleu turquoise */
   }
 
   input { 
@@ -65,7 +69,7 @@
     margin: 10px 0; 
     font-size: 16px; 
     border-radius: 5px; 
-    border: 1px solid #ccc; 
+    border: 2px solid #D72638; /* rouge passion */
   }
 </style>
 </head>
@@ -75,10 +79,20 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Heart_icon_red_hollow.svg/1200px-Heart_icon_red_hollow.svg.png" alt="Décoration cœur">
   Mariage Anas & Eya
 </h1>
-<p>📅 <strong>12 juin 2026</strong></p>
-<p>📍 <strong>Filante 91</strong><br>
-2 rue Jules Guesde, 91130 Ris-Orangis</p>
-<p>🕡 <strong>18h30</strong></p>
+
+<p>
+  <img src="https://twemoji.maxcdn.com/2/72x72/1f4c5.png" alt="Calendrier" width="24">
+  <strong>12 juin 2026</strong>
+</p>
+
+<p>
+  📍 <strong>Filante 91</strong><br>
+  2 rue Jules Guesde, 91130 Ris-Orangis
+</p>
+
+<p>
+  🕡 <strong>18h30</strong>
+</p>
 
 <div id="counter">Déjà <span id="count">0</span> invités ont répondu</div>
 
