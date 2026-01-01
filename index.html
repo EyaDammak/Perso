@@ -11,19 +11,15 @@
     margin: 20px; 
     background: linear-gradient(135deg, #FFF8F0, #FFE5D4); 
     color: #4B3B2B; 
-    overflow: hidden;
-    position: relative;
   }
 
   h1 { 
-    color: #FF6F61; 
+    color: #FF6F61; /* corail romantique */
     font-size: 32px; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
     gap: 10px;
-    position: relative;
-    z-index: 2;
     margin-bottom: 15px;
   }
 
@@ -36,8 +32,6 @@
     font-size: 16px; 
     margin: 5px 0; 
     color: #4B3B2B;
-    position: relative;
-    z-index: 2;
   }
 
   .buttons button { 
@@ -62,8 +56,6 @@
     margin-top: 20px; 
     font-size: 18px; 
     color: #FF6F61; 
-    position: relative;
-    z-index: 2;
   }
 
   #counter { 
@@ -71,8 +63,6 @@
     font-weight: bold; 
     font-size: 16px; 
     color: #F4A261; 
-    position: relative;
-    z-index: 2;
   }
 
   input { 
@@ -82,24 +72,6 @@
     font-size: 16px; 
     border-radius: 5px; 
     border: 2px solid #FF6F61; 
-    position: relative;
-    z-index: 2;
-  }
-
-  /* Petites étoiles animées */
-  .star {
-    position: absolute;
-    background: #FFD166; 
-    border-radius: 50%;
-    opacity: 0.9;
-    animation: fall linear infinite;
-    z-index: 1;
-  }
-
-  @keyframes fall {
-    0% { transform: translateY(-20px) translateX(0); opacity: 0; }
-    10% { opacity: 1; }
-    100% { transform: translateY(120vh) translateX(20px); opacity: 0; }
   }
 
   /* Responsive mobile */
@@ -178,22 +150,6 @@ function sendResponse(choice) {
   })
   .catch(() => alert("Impossible d'envoyer la réponse 🌐"));
 }
-
-// Générer des étoiles adaptées pour mobile
-function createStars() {
-  const numStars = 50;
-  for (let i = 0; i < numStars; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.left = Math.random() * window.innerWidth + 'px';
-    star.style.width = star.style.height = (3 + Math.random() * 6) + 'px';
-    star.style.animationDuration = (3 + Math.random() * 5) + 's';
-    star.style.animationDelay = (Math.random() * 5) + 's';
-    document.body.appendChild(star);
-  }
-}
-
-createStars();
 </script>
 
 </body>
