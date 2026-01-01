@@ -4,17 +4,77 @@
 <meta charset="UTF-8">
 <title>Mariage Anas & Eya 12 juin 2026</title>
 <style>
-  body { font-family: Arial, sans-serif; text-align: center; margin: 30px; background: #fff9f5; color: #333; }
-  h1 { color: #d63384; }
-  .buttons button { margin: 10px; padding: 12px 20px; font-size: 18px; cursor: pointer; }
-  #thanks { margin-top: 30px; font-size: 20px; color: #2d6a4f; }
-  #counter { margin: 20px; font-weight: bold; }
-  input { padding: 10px; width: 80%; margin: 10px 0; font-size: 16px; }
+  body { 
+    font-family: 'Arial', sans-serif; 
+    text-align: center; 
+    margin: 30px; 
+    background: #f0f4f8; 
+    color: #1a1a2e; 
+  }
+
+  h1 { 
+    color: #0d1b2a; 
+    font-size: 36px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+  }
+
+  h1 img {
+    width: 40px;
+    height: 40px;
+  }
+
+  p { 
+    font-size: 18px; 
+    margin: 5px 0; 
+  }
+
+  .buttons button { 
+    margin: 10px; 
+    padding: 12px 25px; 
+    font-size: 18px; 
+    cursor: pointer; 
+    border: none; 
+    border-radius: 6px; 
+    background-color: #0d1b2a; 
+    color: #ffffff; 
+    transition: background-color 0.3s; 
+  }
+
+  .buttons button:hover { 
+    background-color: #1a3c6e; 
+  }
+
+  #thanks { 
+    margin-top: 30px; 
+    font-size: 20px; 
+    color: #1a3c6e; 
+  }
+
+  #counter { 
+    margin: 20px; 
+    font-weight: bold; 
+    font-size: 18px; 
+  }
+
+  input { 
+    padding: 10px; 
+    width: 80%; 
+    margin: 10px 0; 
+    font-size: 16px; 
+    border-radius: 5px; 
+    border: 1px solid #ccc; 
+  }
 </style>
 </head>
 <body>
 
-<h1>🎉 Mariage Anas & Eya</h1>
+<h1>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Heart_icon_red_hollow.svg/1200px-Heart_icon_red_hollow.svg.png" alt="Décoration cœur">
+  Mariage Anas & Eya
+</h1>
 <p>📅 <strong>12 juin 2026</strong></p>
 <p>📍 <strong>Filante 91</strong><br>
 2 rue Jules Guesde, 91130 Ris-Orangis</p>
@@ -34,7 +94,7 @@
 <div id="thanks" style="display:none;">Merci pour ta réponse 💖</div>
 
 <script>
-// Compteur local (sera réinitialisé si on vide le cache)
+// Compteur local
 let count = localStorage.getItem('rsvpCount') || 0;
 document.getElementById('count').innerText = count;
 
@@ -45,7 +105,6 @@ function sendResponse(choice) {
     return;
   }
   
-  // Préparation des données à envoyer
   const data = {
     "name": name,
     "response": choice
@@ -53,18 +112,13 @@ function sendResponse(choice) {
 
   fetch("https://formspree.io/f/mkoggqeb", {
     method: "POST",
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   })
   .then(response => {
     if (response.ok) {
-      // Message de remerciement
       document.getElementById('rsvpForm').style.display = "none";
       document.getElementById('thanks').style.display = "block";
-      
-      // Mettre à jour compteur local
       count++;
       localStorage.setItem('rsvpCount', count);
       document.getElementById('count').innerText = count;
