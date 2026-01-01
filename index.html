@@ -9,8 +9,8 @@
     text-align: center; 
     margin: 30px; 
     background: linear-gradient(135deg, #FFF8F0, #FFE5D4); 
-    color: #4B3B2B; /* brun foncé élégant */
-    overflow-x: hidden;
+    color: #4B3B2B; 
+    overflow: hidden;
     position: relative;
   }
 
@@ -45,13 +45,13 @@
     cursor: pointer; 
     border: none; 
     border-radius: 6px; 
-    background-color: #FFD166; /* doré doux */
+    background-color: #FFD166; 
     color: #4B3B2B; 
     transition: background-color 0.3s, transform 0.2s; 
   }
 
   .buttons button:hover { 
-    background-color: #FF6F61; /* corail */
+    background-color: #FF6F61; 
     color: #FFF8F0;
     transform: scale(1.05);
   }
@@ -59,7 +59,7 @@
   #thanks { 
     margin-top: 30px; 
     font-size: 20px; 
-    color: #FF6F61; /* corail */
+    color: #FF6F61; 
     position: relative;
     z-index: 2;
   }
@@ -68,7 +68,7 @@
     margin: 20px; 
     font-weight: bold; 
     font-size: 18px; 
-    color: #F4A261; /* pêche */
+    color: #F4A261; 
     position: relative;
     z-index: 2;
   }
@@ -79,27 +79,25 @@
     margin: 10px 0; 
     font-size: 16px; 
     border-radius: 5px; 
-    border: 2px solid #FF6F61; /* corail */
+    border: 2px solid #FF6F61; 
     position: relative;
     z-index: 2;
   }
 
-  /* Petites étoiles animées */
+  /* Étoiles animées plus visibles */
   .star {
     position: absolute;
-    width: 5px;
-    height: 5px;
-    background: #FFD166; /* doré */
+    background: #FFD166; 
     border-radius: 50%;
-    opacity: 0.8;
-    animation: fall 5s linear infinite;
+    opacity: 0.9;
+    animation: fall linear infinite;
     z-index: 1;
   }
 
   @keyframes fall {
-    0% { transform: translateY(-50px) translateX(0); opacity: 0; }
+    0% { transform: translateY(-10px); opacity: 0; }
     10% { opacity: 1; }
-    100% { transform: translateY(100vh) translateX(20px); opacity: 0; }
+    100% { transform: translateY(100vh); opacity: 0; }
   }
 
 </style>
@@ -173,13 +171,13 @@ function sendResponse(choice) {
   .catch(() => alert("Impossible d'envoyer la réponse 🌐"));
 }
 
-// Générer des étoiles aléatoires
-for (let i = 0; i < 30; i++) {
+// Générer des étoiles plus visibles
+for (let i = 0; i < 50; i++) {
   const star = document.createElement('div');
   star.className = 'star';
   star.style.left = Math.random() * window.innerWidth + 'px';
+  star.style.width = star.style.height = (3 + Math.random() * 6) + 'px';
   star.style.animationDuration = (3 + Math.random() * 5) + 's';
-  star.style.width = star.style.height = (2 + Math.random() * 4) + 'px';
   document.body.appendChild(star);
 }
 </script>
