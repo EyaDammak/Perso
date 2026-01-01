@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Mariage Anas & Eya 12 juin 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   body { 
     font-family: 'Arial', sans-serif; 
     text-align: center; 
-    margin: 30px; 
+    margin: 20px; 
     background: linear-gradient(135deg, #FFF8F0, #FFE5D4); 
     color: #4B3B2B; 
     overflow: hidden;
@@ -15,23 +16,24 @@
   }
 
   h1 { 
-    color: #FF6F61; /* corail romantique */
-    font-size: 36px; 
+    color: #FF6F61; 
+    font-size: 32px; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
     gap: 10px;
     position: relative;
     z-index: 2;
+    margin-bottom: 15px;
   }
 
   h1 img {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
   }
 
   p { 
-    font-size: 18px; 
+    font-size: 16px; 
     margin: 5px 0; 
     color: #4B3B2B;
     position: relative;
@@ -40,8 +42,8 @@
 
   .buttons button { 
     margin: 10px; 
-    padding: 12px 25px; 
-    font-size: 18px; 
+    padding: 12px 20px; 
+    font-size: 16px; 
     cursor: pointer; 
     border: none; 
     border-radius: 6px; 
@@ -57,17 +59,17 @@
   }
 
   #thanks { 
-    margin-top: 30px; 
-    font-size: 20px; 
+    margin-top: 20px; 
+    font-size: 18px; 
     color: #FF6F61; 
     position: relative;
     z-index: 2;
   }
 
   #counter { 
-    margin: 20px; 
+    margin: 15px; 
     font-weight: bold; 
-    font-size: 18px; 
+    font-size: 16px; 
     color: #F4A261; 
     position: relative;
     z-index: 2;
@@ -75,7 +77,7 @@
 
   input { 
     padding: 10px; 
-    width: 80%; 
+    width: 90%; 
     margin: 10px 0; 
     font-size: 16px; 
     border-radius: 5px; 
@@ -84,7 +86,7 @@
     z-index: 2;
   }
 
-  /* Étoiles animées plus visibles */
+  /* Petites étoiles animées */
   .star {
     position: absolute;
     background: #FFD166; 
@@ -95,11 +97,17 @@
   }
 
   @keyframes fall {
-    0% { transform: translateY(-10px); opacity: 0; }
+    0% { transform: translateY(-20px) translateX(0); opacity: 0; }
     10% { opacity: 1; }
-    100% { transform: translateY(100vh); opacity: 0; }
+    100% { transform: translateY(120vh) translateX(20px); opacity: 0; }
   }
 
+  /* Responsive mobile */
+  @media(max-width:600px){
+    h1 { font-size: 26px; }
+    p, #counter { font-size: 14px; }
+    .buttons button { font-size: 14px; padding: 10px 15px; }
+  }
 </style>
 </head>
 <body>
@@ -110,7 +118,7 @@
 </h1>
 
 <p>
-  <strong>12 juin 2026</strong>
+  📅 <strong>12 juin 2026</strong>
 </p>
 
 <p>
@@ -171,15 +179,21 @@ function sendResponse(choice) {
   .catch(() => alert("Impossible d'envoyer la réponse 🌐"));
 }
 
-// Générer des étoiles plus visibles
-for (let i = 0; i < 50; i++) {
-  const star = document.createElement('div');
-  star.className = 'star';
-  star.style.left = Math.random() * window.innerWidth + 'px';
-  star.style.width = star.style.height = (3 + Math.random() * 6) + 'px';
-  star.style.animationDuration = (3 + Math.random() * 5) + 's';
-  document.body.appendChild(star);
+// Générer des étoiles adaptées pour mobile
+function createStars() {
+  const numStars = 50;
+  for (let i = 0; i < numStars; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * window.innerWidth + 'px';
+    star.style.width = star.style.height = (3 + Math.random() * 6) + 'px';
+    star.style.animationDuration = (3 + Math.random() * 5) + 's';
+    star.style.animationDelay = (Math.random() * 5) + 's';
+    document.body.appendChild(star);
+  }
 }
+
+createStars();
 </script>
 
 </body>
