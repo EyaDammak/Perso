@@ -8,17 +8,21 @@
     font-family: 'Arial', sans-serif; 
     text-align: center; 
     margin: 30px; 
-    background: linear-gradient(135deg, #FFF8F0, #FDEBD0); 
+    background: linear-gradient(135deg, #FFF8F0, #FFE5D4); 
     color: #4B3B2B; /* brun foncé élégant */
+    overflow-x: hidden;
+    position: relative;
   }
 
   h1 { 
-    color: #D72638; /* rouge profond */
+    color: #FF6F61; /* corail romantique */
     font-size: 36px; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
     gap: 10px;
+    position: relative;
+    z-index: 2;
   }
 
   h1 img {
@@ -30,6 +34,8 @@
     font-size: 18px; 
     margin: 5px 0; 
     color: #4B3B2B;
+    position: relative;
+    z-index: 2;
   }
 
   .buttons button { 
@@ -39,13 +45,13 @@
     cursor: pointer; 
     border: none; 
     border-radius: 6px; 
-    background-color: #F4C430; /* doré lumineux */
-    color: #4B3B2B; /* texte brun pour contraste */
+    background-color: #FFD166; /* doré doux */
+    color: #4B3B2B; 
     transition: background-color 0.3s, transform 0.2s; 
   }
 
   .buttons button:hover { 
-    background-color: #D72638; /* rouge passion */
+    background-color: #FF6F61; /* corail */
     color: #FFF8F0;
     transform: scale(1.05);
   }
@@ -53,14 +59,18 @@
   #thanks { 
     margin-top: 30px; 
     font-size: 20px; 
-    color: #FF6F61; /* rose corail */
+    color: #FF6F61; /* corail */
+    position: relative;
+    z-index: 2;
   }
 
   #counter { 
     margin: 20px; 
     font-weight: bold; 
     font-size: 18px; 
-    color: #1CA9C9; /* bleu turquoise */
+    color: #F4A261; /* pêche */
+    position: relative;
+    z-index: 2;
   }
 
   input { 
@@ -69,8 +79,29 @@
     margin: 10px 0; 
     font-size: 16px; 
     border-radius: 5px; 
-    border: 2px solid #D72638; /* rouge passion */
+    border: 2px solid #FF6F61; /* corail */
+    position: relative;
+    z-index: 2;
   }
+
+  /* Petites étoiles animées */
+  .star {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #FFD166; /* doré */
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall 5s linear infinite;
+    z-index: 1;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(-50px) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(100vh) translateX(20px); opacity: 0; }
+  }
+
 </style>
 </head>
 <body>
@@ -81,7 +112,6 @@
 </h1>
 
 <p>
-  <img src="https://twemoji.maxcdn.com/2/72x72/1f4c5.png" alt="Calendrier" width="24">
   <strong>12 juin 2026</strong>
 </p>
 
@@ -142,7 +172,18 @@ function sendResponse(choice) {
   })
   .catch(() => alert("Impossible d'envoyer la réponse 🌐"));
 }
+
+// Générer des étoiles aléatoires
+for (let i = 0; i < 30; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.style.left = Math.random() * window.innerWidth + 'px';
+  star.style.animationDuration = (3 + Math.random() * 5) + 's';
+  star.style.width = star.style.height = (2 + Math.random() * 4) + 'px';
+  document.body.appendChild(star);
+}
 </script>
 
 </body>
 </html>
+
