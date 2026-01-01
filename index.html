@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mariage Anas & Eya 12 juin 2026</title>
+<style>
+  body { font-family: Arial, sans-serif; text-align: center; margin: 30px; background: #fff9f5; color: #333; }
+  h1 { color: #d63384; }
+  .buttons button { margin: 10px; padding: 12px 20px; font-size: 18px; cursor: pointer; }
+  #thanks { margin-top: 30px; font-size: 20px; color: #2d6a4f; }
+  #counter { margin: 20px; font-weight: bold; }
+  input { padding: 10px; width: 80%; margin: 10px 0; font-size: 16px; }
+</style>
+</head>
+<body>
+
+<h1>🎉 Mariage Anas & Eya</h1>
+<p>📅 <strong>12 juin 2026</strong></p>
+<p>📍 <strong>Filante 91</strong><br>
+2 rue Jules Guesde, 91130 Ris-Orangis</p>
+<p>🕡 <strong>18h30</strong></p>
+
+<div id="counter">Déjà <span id="count">0</span> invités ont répondu</div>
+
+<form id="rsvpForm">
+  <input type="text" id="name" placeholder="Ton prénom et nom *" required>
+  <div class="buttons">
+    <button type="button" onclick="sendResponse('OUI')">OUI ! 💍</button>
+    <button type="button" onclick="sendResponse('NON')">NON :(</button>
+    <button type="button" onclick="sendResponse('A RECONFIRMER')">À RECONFIRMER ⏳</button>
+  </div>
+</form>
+
+<div id="thanks" style="display:none;">Merci pour ta réponse 💖</div>
+
+<script>
+// Compteur local (sera réinitialisé si on vide le cache)
+let count = localStorage.getItem('rsvpCount') || 0;
+document.getElementById('count').innerText = count;
+
+function sendResponse(choice) {
+  const name = document.getElementById('name').value.trim();
+  if (!name) {
+    alert("Merci d'indiquer ton prénom et nom 🙂");
+    return;
+  }
+  
+  // Préparation des données à envoyer
+  const data = {
+    "name": name,
+    "response": choice
+  };
+
+  fetch("https://formspree.io/f/mkoggqeb", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    if (response.ok) {
+      // Message de remerciement
+      document.getElementById('rsvpForm').style.display = "none";
+      document.getElementById('thanks').style.display = "block";
+      
+      // Mettre à jour compteur local
+      count++;
+      localStorage.setItem('rsvpCount', count);
+      document.getElementById('count').innerText = count;
+    } else {
+      alert("Oups, erreur d'envoi — réessaie s'il te plaît 💌");
+    }
+  })
+  .catch(() => alert("Impossible d'envoyer la réponse 🌐"));
+}
+</script>
+
+</body>
+</html>
